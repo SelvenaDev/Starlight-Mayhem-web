@@ -31063,6 +31063,7 @@ MenuCharacter.prototype = $extend(flixel_FlxSprite.prototype,{
 			}
 			rawJson = openfl_utils_Assets.getText(path);
 			var charFile = JSON.parse(rawJson);
+			charFile.scale *= (StoryMenuState.mobileLowMemory ? 2 : 1);
 			var key = "menucharacters/" + charFile.image + (StoryMenuState.mobileLowMemory ? "-mobile" : "");
 			var library = null;
 			this.set_frames(flixel_graphics_frames_FlxAtlasFrames.fromSparrow(Paths.getPath("images/" + key + ".png","IMAGE",library),Paths.getPath("images/" + key + ".xml","TEXT",library)));
@@ -31072,7 +31073,7 @@ MenuCharacter.prototype = $extend(flixel_FlxSprite.prototype,{
 				this.scale.set(charFile.scale,charFile.scale);
 				this.updateHitbox();
 			}
-			this.offset.set(charFile.position[0] * (StoryMenuState.mobileLowMemory ? 0.5 : 1),charFile.position[1] * (StoryMenuState.mobileLowMemory ? 0.5 : 1));
+			this.offset.set(charFile.position[0],charFile.position[1]);
 			this.animation.play("idle");
 		} else if(character == "") {
 			this.set_visible(false);
@@ -31094,6 +31095,7 @@ MenuCharacter.prototype = $extend(flixel_FlxSprite.prototype,{
 			}
 			rawJson = openfl_utils_Assets.getText(path);
 			var charFile = JSON.parse(rawJson);
+			charFile.scale *= (StoryMenuState.mobileLowMemory ? 2 : 1);
 			var key = "menucharacters/" + charFile.image + (StoryMenuState.mobileLowMemory ? "-mobile" : "");
 			var library = null;
 			this.set_frames(flixel_graphics_frames_FlxAtlasFrames.fromSparrow(Paths.getPath("images/" + key + ".png","IMAGE",library),Paths.getPath("images/" + key + ".xml","TEXT",library)));
@@ -31103,7 +31105,7 @@ MenuCharacter.prototype = $extend(flixel_FlxSprite.prototype,{
 				this.scale.set(charFile.scale,charFile.scale);
 				this.updateHitbox();
 			}
-			this.offset.set(charFile.position[0] * (StoryMenuState.mobileLowMemory ? 0.5 : 1),charFile.position[1] * (StoryMenuState.mobileLowMemory ? 0.5 : 1));
+			this.offset.set(charFile.position[0],charFile.position[1]);
 			this.animation.play("idle");
 		}
 	}
