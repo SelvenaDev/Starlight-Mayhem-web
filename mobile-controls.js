@@ -30,7 +30,9 @@
         // The standard key/code values remain available if a browser locks these properties.
       }
     }
-    window.dispatchEvent(event);
+    // Start at document so the keyboard event bubbles to both document and window
+    // listeners used by OpenFL across desktop and mobile browsers.
+    document.dispatchEvent(event);
   }
 
   function press(key) {

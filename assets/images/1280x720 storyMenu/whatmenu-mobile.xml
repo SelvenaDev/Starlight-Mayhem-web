@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="whatmenu-mobile.png">
+	<!-- Created with Adobe Animate version 21.0.7.42652 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="Dad idle dance0000" x="2" y="2" width="148" height="344" frameX="-17" frameY="-9" frameWidth="168" frameHeight="353"/>
+	<SubTexture name="Dad idle dance0001" x="152" y="2" width="152" height="344" frameX="-15" frameY="-8" frameWidth="168" frameHeight="353"/>
+	<SubTexture name="Dad idle dance0002" x="306" y="2" width="160" height="346" frameX="-8" frameY="-7" frameWidth="168" frameHeight="353"/>
+	<SubTexture name="Dad idle dance0003" x="468" y="2" width="164" height="348" frameX="-5" frameY="-4" frameWidth="168" frameHeight="353"/>
+	<SubTexture name="Dad idle dance0004" x="634" y="2" width="166" height="350" frameX="-2" frameY="-2" frameWidth="168" frameHeight="353"/>
+	<SubTexture name="Dad idle dance0005" x="801" y="2" width="168" height="352" frameX="0" frameY="-1" frameWidth="168" frameHeight="353"/>
+	<SubTexture name="Dad idle dance0006" x="971" y="2" width="168" height="353" frameX="0" frameY="0" frameWidth="168" frameHeight="353"/>
+	<SubTexture name="Dad idle dance0007" x="1140" y="2" width="164" height="352" frameX="-3" frameY="-1" frameWidth="168" frameHeight="353"/>
+	<SubTexture name="Dad idle dance0008" x="1306" y="2" width="160" height="351" frameX="-6" frameY="-2" frameWidth="168" frameHeight="353"/>
+	<SubTexture name="Dad idle dance0009" x="1469" y="2" width="157" height="349" frameX="-9" frameY="-4" frameWidth="168" frameHeight="353"/>
+	<SubTexture name="Dad idle dance0010" x="1628" y="2" width="154" height="347" frameX="-12" frameY="-6" frameWidth="168" frameHeight="353"/>
+	<SubTexture name="Dad idle dance0011" x="1784" y="2" width="150" height="344" frameX="-15" frameY="-8" frameWidth="168" frameHeight="353"/>
+	<SubTexture name="Dad idle dance0012" x="2" y="356" width="148" height="344" frameX="-17" frameY="-9" frameWidth="168" frameHeight="353"/>
+</TextureAtlas>

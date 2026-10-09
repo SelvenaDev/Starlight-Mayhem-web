@@ -31,6 +31,9 @@
 			}
 			window.gamePlatform = platform;
 			window.isWindowsPC = platform === "Windows";
+			var touchPointer = !!window.matchMedia && window.matchMedia("(pointer: coarse)").matches;
+			var compactTouch = !!window.matchMedia && window.matchMedia("(max-width: 900px) and (hover: none)").matches;
+			window.isMobileDevice = platform === "Android" || platform === "iOS" || (platform !== "Windows" && (touchPointer || compactTouch));
 			document.documentElement.dataset.platform = platform.toLowerCase();
 			if (!requested && platform !== "Unknown") {
 				params.set("platform", platform);
