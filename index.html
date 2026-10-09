@@ -6,6 +6,38 @@
 	<meta id="viewport" name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
 	<meta name="apple-mobile-web-app-capable" content="yes">
 	<link rel="shortcut icon" type="image/png" href="./favicon.png">
+	<script>
+		(function () {
+			var params = new URLSearchParams(window.location.search);
+			var requested = params.get("platform");
+			var uaDataPlatform = navigator.userAgentData && navigator.userAgentData.platform || "";
+			var platformInfo = [uaDataPlatform, navigator.platform || "", navigator.userAgent || ""].join(" ");
+			var platform;
+			if (requested) {
+				var value = requested.toLowerCase();
+				platform = /windows|win32|win64/.test(value) ? "Windows" : /android/.test(value) ? "Android" : /ios|iphone|ipad|ipod/.test(value) ? "iOS" : /mac|darwin/.test(value) ? "macOS" : /linux|x11/.test(value) ? "Linux" : "Unknown";
+			} else if (/iPhone|iPad|iPod/i.test(platformInfo) || (/MacIntel/i.test(navigator.platform || "") && navigator.maxTouchPoints > 1)) {
+				platform = "iOS";
+			} else if (/windows|win32|win64/i.test(platformInfo)) {
+				platform = "Windows";
+			} else if (/android/i.test(platformInfo)) {
+				platform = "Android";
+			} else if (/mac|darwin/i.test(platformInfo)) {
+				platform = "macOS";
+			} else if (/linux|x11/i.test(platformInfo)) {
+				platform = "Linux";
+			} else {
+				platform = "Unknown";
+			}
+			window.gamePlatform = platform;
+			window.isWindowsPC = platform === "Windows";
+			document.documentElement.dataset.platform = platform.toLowerCase();
+			if (!requested && platform !== "Unknown") {
+				params.set("platform", platform);
+				window.history.replaceState(window.history.state, "", window.location.pathname + "?" + params.toString() + window.location.hash);
+			}
+		})();
+	</script>
 	<script type="text/javascript" src="./Starlight Mayhem.js"></script>
 	<script>
 		window.addEventListener("touchmove", function(event) { event.preventDefault(); }, { capture: false, passive: false });
