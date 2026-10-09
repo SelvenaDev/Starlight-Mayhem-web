@@ -30526,6 +30526,22 @@ ManifestResources.init = function(config) {
 		data = data.replace("R0y60:assets%2Fimages%2F1280x720%20storyMenu%2FMENUduet_assets.xmlR2i3896R3R4R5R261R6tgo", "R0y67:assets%2Fimages%2F1280x720%20storyMenu%2FMENUduet_assets-mobile.xmlR2i3795R3R4R5R261R6tgo");
 		data = data.replace("R0y53:assets%2Fimages%2F1280x720%20storyMenu%2Fwhatmenu.pngR2i230428R3R120R5R277R6tgo", "R0y60:assets%2Fimages%2F1280x720%20storyMenu%2Fwhatmenu-mobile.pngR2i61542R3R120R5R277R6tgo");
 		data = data.replace("R0y53:assets%2Fimages%2F1280x720%20storyMenu%2Fwhatmenu.xmlR2i2034R3R4R5R278R6tgo", "R0y60:assets%2Fimages%2F1280x720%20storyMenu%2Fwhatmenu-mobile.xmlR2i1900R3R4R5R278R6tgo");
+		// Do not decode the giant gameplay character sheets during mobile startup.
+		// StoryMenu uses its own reduced atlases; gameplay libraries are loaded after selection.
+		var deferredMobileImages = ["assets%2Fimages%2Fcharacters%2F"];
+		for(var deferredImageIndex = 0; deferredImageIndex < deferredMobileImages.length; deferredImageIndex++) {
+			var deferredImagePath = deferredMobileImages[deferredImageIndex];
+			var deferredCursor = 0;
+			while((deferredCursor = data.indexOf(deferredImagePath,deferredCursor)) >= 0) {
+				var deferredEnd = data.indexOf("g",deferredCursor);
+				if(deferredEnd < 0) break;
+				var deferredChunk = data.substring(deferredCursor,deferredEnd);
+				// R5 is the shared serialized `preload=true` reference for image assets.
+				deferredChunk = deferredChunk.replace("R5", "y7:preloadf");
+				data = data.substring(0,deferredCursor) + deferredChunk + data.substring(deferredEnd);
+				deferredCursor += deferredChunk.length + 1;
+			}
+		}
 		var mobileMenuAssets = [
 			["Menu_BF.png", "Menu_BF-mobile.png", 208834, 292991, "Menu_BF.xml", "Menu_BF-mobile.xml", 5582, 5538],
 			["Menu_Dad.png", "Menu_Dad-mobile.png", 116690, 112152, "Menu_Dad.xml", "Menu_Dad-mobile.xml", 2115, 2033],
