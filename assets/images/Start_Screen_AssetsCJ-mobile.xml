@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='utf-8'?>
+<TextureAtlas imagePath="Start_Screen_AssetsCJ-mobile.png">
+  <SubTexture name="StartscreenCJRUBY0000" x="1" y="1" width="164" height="205" frameX="-7" frameY="-2" frameWidth="174" frameHeight="207" />
+  <SubTexture name="StartscreenCJRUBY0001" x="166" y="1" width="169" height="205" frameX="-4" frameY="-2" frameWidth="174" frameHeight="207" />
+  <SubTexture name="StartscreenCJRUBY0002" x="336" y="1" width="173" height="206" frameX="-1" frameY="0" frameWidth="174" frameHeight="207" />
+  <SubTexture name="StartscreenCJRUBY0003" x="510" y="1" width="174" height="207" frameX="0" frameY="0" frameWidth="174" frameHeight="207" />
+  <SubTexture name="StartscreenCJRUBY0004" x="686" y="1" width="174" height="207" frameX="0" frameY="0" frameWidth="174" frameHeight="207" />
+  <SubTexture name="StartscreenCJRUBY0005" x="1" y="208" width="174" height="207" frameX="0" frameY="0" frameWidth="174" frameHeight="207" />
+  <SubTexture name="StartscreenCJRUBY0006" x="176" y="208" width="172" height="206" frameX="-2" frameY="-1" frameWidth="174" frameHeight="207" />
+  <SubTexture name="StartscreenCJRUBY0007" x="348" y="208" width="169" height="206" frameX="-4" frameY="-2" frameWidth="174" frameHeight="207" />
+  <SubTexture name="StartscreenCJRUBY0008" x="519" y="208" width="166" height="205" frameX="-6" frameY="-2" frameWidth="174" frameHeight="207" />
+  <SubTexture name="StartscreenCJRUBY0009" x="686" y="208" width="164" height="205" frameX="-7" frameY="-2" frameWidth="174" frameHeight="207" />
+  <SubTexture name="StartscreenCJRUBY0010" x="852" y="208" width="164" height="205" frameX="-7" frameY="-2" frameWidth="174" frameHeight="207" />
+  <SubTexture name="StartscreenCJRUBY0011" x="852" y="208" width="164" height="205" frameX="-7" frameY="-2" frameWidth="174" frameHeight="207" />
+  <SubTexture name="StartscreenCJRUBY0012" x="852" y="208" width="164" height="205" frameX="-7" frameY="-2" frameWidth="174" frameHeight="207" />
+</TextureAtlas>

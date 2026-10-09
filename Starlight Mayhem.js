@@ -30526,6 +30526,12 @@ ManifestResources.init = function(config) {
 		data = data.replace("R0y60:assets%2Fimages%2F1280x720%20storyMenu%2FMENUduet_assets.xmlR2i3896R3R4R5R261R6tgo", "R0y67:assets%2Fimages%2F1280x720%20storyMenu%2FMENUduet_assets-mobile.xmlR2i3795R3R4R5R261R6tgo");
 		data = data.replace("R0y53:assets%2Fimages%2F1280x720%20storyMenu%2Fwhatmenu.pngR2i230428R3R120R5R277R6tgo", "R0y60:assets%2Fimages%2F1280x720%20storyMenu%2Fwhatmenu-mobile.pngR2i61542R3R120R5R277R6tgo");
 		data = data.replace("R0y53:assets%2Fimages%2F1280x720%20storyMenu%2Fwhatmenu.xmlR2i2034R3R4R5R278R6tgo", "R0y60:assets%2Fimages%2F1280x720%20storyMenu%2Fwhatmenu-mobile.xmlR2i1900R3R4R5R278R6tgo");
+		data = data.replace("R0y43:assets%2Fimages%2FStart_Screen_AssetsCJ.pngR2i2650125R3R120R5R286R6tgo", "R0y50:assets%2Fimages%2FStart_Screen_AssetsCJ-mobile.pngR2i502607R3R120R5R286R6tgo");
+		data = data.replace("R0y43:assets%2Fimages%2FStart_Screen_AssetsCJ.xmlR2i2093R3R4R5R287R6tgo", "R0y50:assets%2Fimages%2FStart_Screen_AssetsCJ-mobile.xmlR2i1832R3R4R5R287R6tgo");
+		data = data.replace("R0y32:assets%2Fimages%2FtitleEnter.pngR2i1497956R3R120R5R433R6tgo", "R0y39:assets%2Fimages%2FtitleEnter-mobile.pngR2i356642R3R120R5R433R6tgo");
+		data = data.replace("R0y32:assets%2Fimages%2FtitleEnter.xmlR2i4875R3R4R5R434R6tgo", "R0y39:assets%2Fimages%2FtitleEnter-mobile.xmlR2i1848R3R4R5R434R6tgo");
+		data = data.replace("R0y35:assets%2Fimages%2FLogo%20Bumpin.pngR2i1509596R3R120R5R279R6tgo", "R0y42:assets%2Fimages%2FLogo%20Bumpin-mobile.pngR2i205930R3R120R5R279R6tgo");
+		data = data.replace("R0y35:assets%2Fimages%2FLogo%20Bumpin.xmlR2i2178R3R4R5R280R6tgo", "R0y42:assets%2Fimages%2FLogo%20Bumpin-mobile.xmlR2i1834R3R4R5R280R6tgo");
 		// Do not decode the giant gameplay character sheets during mobile startup.
 		// StoryMenu uses its own reduced atlases; gameplay libraries are loaded after selection.
 		var deferredMobileImages = ["assets%2Fimages%2Fcharacters%2F"];
@@ -43380,12 +43386,12 @@ TitleState.prototype = $extend(MusicBeatState.prototype,{
 		this.add(this.blackthing2);
 		this.logoBl = new flixel_FlxSprite(-150,-100);
 		var library = null;
-		this.logoBl.set_frames(flixel_graphics_frames_FlxAtlasFrames.fromSparrow(Paths.getPath("images/" + "Logo Bumpin" + ".png","IMAGE",library),Paths.getPath("images/" + "Logo Bumpin" + ".xml","TEXT",library)));
+		this.logoBl.set_frames(flixel_graphics_frames_FlxAtlasFrames.fromSparrow(Paths.getPath("images/" + (StoryMenuState.mobileLowMemory ? "Logo Bumpin-mobile" : "Logo Bumpin") + ".png","IMAGE",library),Paths.getPath("images/" + (StoryMenuState.mobileLowMemory ? "Logo Bumpin-mobile" : "Logo Bumpin") + ".xml","TEXT",library)));
 		this.logoBl.set_antialiasing(ClientPrefs.globalAntialiasing);
 		this.logoBl.animation.addByPrefix("bump","logo bumpin",24);
 		this.logoBl.animation.play("bump");
 		this.logoBl.updateHitbox();
-		this.logoBl.scale.set(0.9,0.9);
+		this.logoBl.scale.set(StoryMenuState.mobileLowMemory ? 3.6 : 0.9,StoryMenuState.mobileLowMemory ? 3.6 : 0.9);
 		var fh = this.logoBl;
 		fh.set_x(fh.x + 25);
 		var fh = this.logoBl;
@@ -43393,9 +43399,10 @@ TitleState.prototype = $extend(MusicBeatState.prototype,{
 		this.swagShader = new ColorSwap();
 		this.gfDance = new flixel_FlxSprite(flixel_FlxG.width * 0.4,flixel_FlxG.height * 0.07);
 		var library = null;
-		this.gfDance.set_frames(flixel_graphics_frames_FlxAtlasFrames.fromSparrow(Paths.getPath("images/" + "Start_Screen_AssetsCJ" + ".png","IMAGE",library),Paths.getPath("images/" + "Start_Screen_AssetsCJ" + ".xml","TEXT",library)));
+		this.gfDance.set_frames(flixel_graphics_frames_FlxAtlasFrames.fromSparrow(Paths.getPath("images/" + (StoryMenuState.mobileLowMemory ? "Start_Screen_AssetsCJ-mobile" : "Start_Screen_AssetsCJ") + ".png","IMAGE",library),Paths.getPath("images/" + (StoryMenuState.mobileLowMemory ? "Start_Screen_AssetsCJ-mobile" : "Start_Screen_AssetsCJ") + ".xml","TEXT",library)));
 		this.gfDance.animation.addByIndices("danceLeft","StartscreenCJRUBY",[0,1,2,3,4,5,6,7,8,9,10,11,12],"",24,false);
 		this.gfDance.set_antialiasing(true);
+		if(StoryMenuState.mobileLowMemory) this.gfDance.scale.set(4,4);
 		var fh = this.gfDance;
 		fh.set_x(fh.x + 110);
 		this.add(this.gfDance);
@@ -43403,11 +43410,12 @@ TitleState.prototype = $extend(MusicBeatState.prototype,{
 		this.add(this.logoBl);
 		this.titleText = new flixel_FlxSprite(100,flixel_FlxG.height * 0.8);
 		var library = null;
-		this.titleText.set_frames(flixel_graphics_frames_FlxAtlasFrames.fromSparrow(Paths.getPath("images/" + "titleEnter" + ".png","IMAGE",library),Paths.getPath("images/" + "titleEnter" + ".xml","TEXT",library)));
+		this.titleText.set_frames(flixel_graphics_frames_FlxAtlasFrames.fromSparrow(Paths.getPath("images/" + (StoryMenuState.mobileLowMemory ? "titleEnter-mobile" : "titleEnter") + ".png","IMAGE",library),Paths.getPath("images/" + (StoryMenuState.mobileLowMemory ? "titleEnter-mobile" : "titleEnter") + ".xml","TEXT",library)));
 		this.titleText.animation.addByPrefix("idle","Press Enter to Begin",24);
 		this.titleText.animation.addByPrefix("press","ENTER PRESSED",24);
 		this.titleText.set_antialiasing(ClientPrefs.globalAntialiasing);
 		this.titleText.animation.play("idle");
+		if(StoryMenuState.mobileLowMemory) this.titleText.scale.set(4,4);
 		this.titleText.updateHitbox();
 		this.add(this.titleText);
 		var logo = new flixel_FlxSprite().loadGraphic(Paths.getPath("images/" + "logo" + ".png","IMAGE",null));
