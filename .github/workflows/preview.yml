@@ -23,6 +23,9 @@ jobs:
       - name: Check game JavaScript syntax
         run: node --check "Starlight Mayhem.js"
 
+      - name: Check mobile controls JavaScript syntax
+        run: node --check mobile-controls.js
+
       - name: Check local server Python syntax
         run: python3 -m py_compile serve.py
 
@@ -31,7 +34,7 @@ jobs:
           mkdir -p dist
           zip -qr "dist/Starlight-Mayhem-HTML5-Preview.zip" \
             assets flixel lib manifest favicon.png index.html \
-            "Starlight Mayhem.js" serve.py README-ja.md "do NOT readme.txt"
+            "Starlight Mayhem.js" mobile-controls.js serve.py README-ja.md "do NOT readme.txt"
           unzip -tq "dist/Starlight-Mayhem-HTML5-Preview.zip"
 
       - name: Upload preview ZIP artifact

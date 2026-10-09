@@ -1,80 +1,66 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	
 	<meta charset="utf-8">
-	
 	<title>Friday Night Funkin' Starlight Mayhem</title>
-	
-	<meta id="viewport" name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+	<meta id="viewport" name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
 	<meta name="apple-mobile-web-app-capable" content="yes">
-	
-	
 	<link rel="shortcut icon" type="image/png" href="./favicon.png">
-	
-	
 	<script type="text/javascript" src="./Starlight Mayhem.js"></script>
-	
 	<script>
-		window.addEventListener ("touchmove", function (event) { event.preventDefault (); }, { capture: false, passive: false });
-		if (typeof window.devicePixelRatio != 'undefined' && window.devicePixelRatio > 2) {
-			var meta = document.getElementById ("viewport");
-			meta.setAttribute ('content', 'width=device-width, initial-scale=' + (2 / window.devicePixelRatio) + ', user-scalable=no');
+		window.addEventListener("touchmove", function(event) { event.preventDefault(); }, { capture: false, passive: false });
+		if (typeof window.devicePixelRatio != "undefined" && window.devicePixelRatio > 2) {
+			var meta = document.getElementById("viewport");
+			meta.setAttribute("content", "width=device-width, initial-scale=" + (2 / window.devicePixelRatio) + ", maximum-scale=1.0, user-scalable=no, viewport-fit=cover");
 		}
 	</script>
-	
 	<style>
-		html,body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
-		#openfl-content { background: #000000; width: 100%; height: 100%; }
-		@font-face {
-			font-family: 'Blank River';
-			src: url('assets/fonts/Blank River.ttf') format('truetype');
-			font-weight: normal;
-			font-style: normal;
+		html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; overscroll-behavior: none; -webkit-tap-highlight-color: transparent; }
+		#openfl-content { background: #000000; position: fixed; inset: 0; width: 100vw; height: 100vh; height: 100dvh; }
+		#openfl-content canvas { display: block; }
+		#mobile-controls { display: none; }
+		@media (pointer: coarse), (max-width: 900px) and (hover: none) {
+			#mobile-controls { display: block; position: fixed; inset: 0; z-index: 100; pointer-events: none; touch-action: none; user-select: none; -webkit-user-select: none; }
+			.touch-pad, .touch-actions { position: absolute; bottom: calc(14px + env(safe-area-inset-bottom)); pointer-events: none; }
+			.touch-pad { --touch-size: clamp(52px, 13vw, 74px); display: grid; grid-template: repeat(3, var(--touch-size)) / repeat(3, var(--touch-size)); gap: 5px; left: calc(12px + env(safe-area-inset-left)); }
+			.touch-actions { display: flex; flex-direction: column; gap: 8px; right: calc(14px + env(safe-area-inset-right)); }
+			#mobile-controls button { width: var(--touch-size, clamp(52px, 13vw, 74px)); height: var(--touch-size, clamp(52px, 13vw, 74px)); border: 2px solid rgba(126, 235, 255, .88); border-radius: 18px; color: #fff; background: rgba(9, 27, 55, .72); box-shadow: 0 0 12px rgba(0, 210, 255, .32), inset 0 0 12px rgba(0, 150, 255, .16); font: 700 clamp(21px, 5vw, 30px)/1 system-ui, sans-serif; text-shadow: 0 2px 3px #000; pointer-events: auto; touch-action: none; -webkit-tap-highlight-color: transparent; }
+			.touch-actions button { width: clamp(68px, 18vw, 82px) !important; height: clamp(52px, 13vw, 68px) !important; font-size: clamp(15px, 4vw, 19px) !important; }
+			#mobile-controls button.is-pressed { background: rgba(0, 180, 255, .88); transform: scale(.94); }
+			.touch-pad [data-key="ArrowUp"] { grid-area: 1 / 2; }
+			.touch-pad [data-key="ArrowLeft"] { grid-area: 2 / 1; }
+			.touch-pad [data-key="ArrowDown"] { grid-area: 2 / 2; }
+			.touch-pad [data-key="ArrowRight"] { grid-area: 2 / 3; }
+			#mobile-hint { position: absolute; top: calc(10px + env(safe-area-inset-top)); left: 50%; transform: translateX(-50%); max-width: 92vw; padding: 6px 10px; border-radius: 12px; color: #fff; background: rgba(0, 0, 0, .56); font: 600 12px/1.3 system-ui, sans-serif; text-align: center; white-space: nowrap; }
 		}
-		@font-face {
-			font-family: 'p5hatty';
-			src: url('assets/fonts/p5hatty.ttf') format('truetype');
-			font-weight: normal;
-			font-style: normal;
-		}
-		@font-face {
-			font-family: 'Pixel Arial 11 Bold';
-			src: url('assets/fonts/pixel.otf') format('truetype');
-			font-weight: normal;
-			font-style: normal;
-		}
-		@font-face {
-			font-family: 'VCR OSD Mono';
-			src: url('assets/fonts/vcr.ttf') format('truetype');
-			font-weight: normal;
-			font-style: normal;
-		}
-		@font-face {
-			font-family: 'Nokia Cellphone FC Small';
-			src: url('flixel/fonts/nokiafc22.ttf') format('truetype');
-			font-weight: normal;
-			font-style: normal;
-		}
-		@font-face {
-			font-family: 'Monsterrat';
-			src: url('flixel/fonts/monsterrat.ttf') format('truetype');
-			font-weight: normal;
-			font-style: normal;
-		}
-
+		@media (pointer: coarse) and (orientation: landscape) { #mobile-hint { display: none; } }
+		@font-face { font-family: 'Blank River'; src: url('assets/fonts/Blank River.ttf') format('truetype'); font-weight: normal; font-style: normal; }
+		@font-face { font-family: 'p5hatty'; src: url('assets/fonts/p5hatty.ttf') format('truetype'); font-weight: normal; font-style: normal; }
+		@font-face { font-family: 'Pixel Arial 11 Bold'; src: url('assets/fonts/pixel.otf') format('truetype'); font-weight: normal; font-style: normal; }
+		@font-face { font-family: 'VCR OSD Mono'; src: url('assets/fonts/vcr.ttf') format('truetype'); font-weight: normal; font-style: normal; }
+		@font-face { font-family: 'Nokia Cellphone FC Small'; src: url('flixel/fonts/nokiafc22.ttf') format('truetype'); font-weight: normal; font-style: normal; }
+		@font-face { font-family: 'Monsterrat'; src: url('flixel/fonts/monsterrat.ttf') format('truetype'); font-weight: normal; font-style: normal; }
 	</style>
-	
 </head>
 <body>
-	
 	<noscript>This webpage makes extensive use of JavaScript. Please enable JavaScript in your web browser to view this page.</noscript>
-	
 	<div id="openfl-content"></div>
-	
 	<script type="text/javascript">
-		lime.embed ("Starlight Mayhem", "openfl-content", 1280, 720, { parameters: {} });
+		lime.embed("Starlight Mayhem", "openfl-content", 1280, 720, { parameters: {} });
 	</script>
-	
+	<div id="mobile-controls" aria-label="Touch controls">
+		<div id="mobile-hint" aria-hidden="true">画面を横向きにすると遊びやすくなります · 下のボタンで操作</div>
+		<div class="touch-pad" aria-label="移動・譜面入力">
+			<button type="button" data-key="ArrowUp" aria-label="上へ">▲</button>
+			<button type="button" data-key="ArrowLeft" aria-label="左へ">◀</button>
+			<button type="button" data-key="ArrowDown" aria-label="下へ">▼</button>
+			<button type="button" data-key="ArrowRight" aria-label="右へ">▶</button>
+		</div>
+		<div class="touch-actions" aria-label="メニュー操作">
+			<button type="button" data-key="Enter" aria-label="決定">決定</button>
+			<button type="button" data-key="Escape" aria-label="戻る">戻る</button>
+		</div>
+	</div>
+	<script type="text/javascript" src="./mobile-controls.js"></script>
 </body>
 </html>
