@@ -40647,13 +40647,16 @@ StoryMenuState.prototype = $extend(MusicBeatState.prototype,{
 		}
 		WeekData.setDirectoryFromWeek(WeekData.weeksLoaded.h[WeekData.weeksList[0]]);
 		var charArray = WeekData.weeksLoaded.h[WeekData.weeksList[0]].weekCharacters;
-		var weekCharacterThing = new MenuCharacter(flixel_FlxG.width * 0.25 - 150,charArray[0]);
+		// The StoryMenu character strip sits too far left on the mobile layout.
+		// Preserve the 320px spacing, but move the complete strip right by 120px.
+		var storyCharacterShift = StoryMenuState.mobileLowMemory ? 120 : 0;
+		var weekCharacterThing = new MenuCharacter(flixel_FlxG.width * 0.25 - 150 + storyCharacterShift,charArray[0]);
 		weekCharacterThing.set_y(weekCharacterThing.y + 70);
 		this.grpWeekCharacters.add(weekCharacterThing);
-		var weekCharacterThing = new MenuCharacter(flixel_FlxG.width * 0.25 * 2 - 150,charArray[1]);
+		var weekCharacterThing = new MenuCharacter(flixel_FlxG.width * 0.25 * 2 - 150 + storyCharacterShift,charArray[1]);
 		weekCharacterThing.set_y(weekCharacterThing.y + 70);
 		this.grpWeekCharacters.add(weekCharacterThing);
-		var weekCharacterThing = new MenuCharacter(flixel_FlxG.width * 0.25 * 3 - 150,charArray[2]);
+		var weekCharacterThing = new MenuCharacter(flixel_FlxG.width * 0.25 * 3 - 150 + storyCharacterShift,charArray[2]);
 		weekCharacterThing.set_y(weekCharacterThing.y + 70);
 		this.grpWeekCharacters.add(weekCharacterThing);
 		this.difficultySelectors = new flixel_group_FlxTypedGroup();
