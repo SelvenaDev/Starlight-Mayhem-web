@@ -1,0 +1,43 @@
+name: Validate and package HTML5 preview
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate-and-package:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Check game JavaScript syntax
+        run: node --check "Starlight Mayhem.js"
+
+      - name: Check local server Python syntax
+        run: python3 -m py_compile serve.py
+
+      - name: Build preview ZIP
+        run: |
+          mkdir -p dist
+          zip -qr "dist/Starlight-Mayhem-HTML5-Preview.zip" \
+            assets flixel lib manifest favicon.png index.html \
+            "Starlight Mayhem.js" serve.py README-ja.md "do NOT readme.txt"
+          unzip -tq "dist/Starlight-Mayhem-HTML5-Preview.zip"
+
+      - name: Upload preview ZIP artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: Starlight-Mayhem-HTML5-Preview
+          path: dist/Starlight-Mayhem-HTML5-Preview.zip
+          if-no-files-found: error
+          retention-days: 14
