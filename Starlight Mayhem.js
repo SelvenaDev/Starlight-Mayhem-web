@@ -30526,6 +30526,40 @@ ManifestResources.init = function(config) {
 		data = data.replace("R0y60:assets%2Fimages%2F1280x720%20storyMenu%2FMENUduet_assets.xmlR2i3896R3R4R5R261R6tgo", "R0y67:assets%2Fimages%2F1280x720%20storyMenu%2FMENUduet_assets-mobile.xmlR2i3795R3R4R5R261R6tgo");
 		data = data.replace("R0y53:assets%2Fimages%2F1280x720%20storyMenu%2Fwhatmenu.pngR2i230428R3R120R5R277R6tgo", "R0y60:assets%2Fimages%2F1280x720%20storyMenu%2Fwhatmenu-mobile.pngR2i61542R3R120R5R277R6tgo");
 		data = data.replace("R0y53:assets%2Fimages%2F1280x720%20storyMenu%2Fwhatmenu.xmlR2i2034R3R4R5R278R6tgo", "R0y60:assets%2Fimages%2F1280x720%20storyMenu%2Fwhatmenu-mobile.xmlR2i1900R3R4R5R278R6tgo");
+		var mobileMenuAssets = [
+			["Menu_BF.png", "Menu_BF-mobile.png", 208834, 292991, "Menu_BF.xml", "Menu_BF-mobile.xml", 5582, 5538],
+			["Menu_Dad.png", "Menu_Dad-mobile.png", 116690, 112152, "Menu_Dad.xml", "Menu_Dad-mobile.xml", 2115, 2033],
+			["Menu_GF.png", "Menu_GF-mobile.png", 330213, 343403, "Menu_GF.xml", "Menu_GF-mobile.xml", 3802, 3740],
+			["Menu_Mom.png", "Menu_Mom-mobile.png", 156895, 162132, "Menu_Mom.xml", "Menu_Mom-mobile.xml", 2113, 1993],
+			["Menu_Parents.png", "Menu_Parents-mobile.png", 351693, 360909, "Menu_Parents.xml", "Menu_Parents-mobile.xml", 2188, 2102],
+			["Menu_Pico.png", "Menu_Pico-mobile.png", 113929, 135510, "Menu_Pico.xml", "Menu_Pico-mobile.xml", 2142, 2059],
+			["Menu_Senpai.png", "Menu_Senpai-mobile.png", 66773, 115676, "Menu_Senpai.xml", "Menu_Senpai-mobile.xml", 1348, 1268],
+			["Menu_Spooky_Kids.png", "Menu_Spooky_Kids-mobile.png", 81655, 89026, "Menu_Spooky_Kids.xml", "Menu_Spooky_Kids-mobile.xml", 2543, 2453],
+		];
+		for(var mobileMenuIndex = 0; mobileMenuIndex < mobileMenuAssets.length; mobileMenuIndex++) {
+			var mobileMenuAsset = mobileMenuAssets[mobileMenuIndex];
+			var mobileMenuPath = "assets%2Fimages%2Fmenucharacters%2F" + mobileMenuAsset[0];
+			var mobileMenuStart = data.indexOf(mobileMenuPath);
+			if(mobileMenuStart >= 0) {
+				var mobileMenuEnd = data.indexOf("g",mobileMenuStart);
+				var mobileMenuChunk = data.substring(mobileMenuStart,mobileMenuEnd);
+				mobileMenuChunk = mobileMenuChunk.replace("y" + mobileMenuAsset[0].length + ":" + mobileMenuAsset[0], "y" + mobileMenuAsset[1].length + ":" + mobileMenuAsset[1]);
+				mobileMenuChunk = mobileMenuChunk.replace("R2i" + mobileMenuAsset[2], "R2i" + mobileMenuAsset[3]);
+				data = data.substring(0,mobileMenuStart) + mobileMenuChunk + data.substring(mobileMenuEnd);
+			}
+		}
+		for(var mobileMenuXmlIndex = 0; mobileMenuXmlIndex < mobileMenuAssets.length; mobileMenuXmlIndex++) {
+			var mobileMenuXml = mobileMenuAssets[mobileMenuXmlIndex];
+			var mobileXmlPath = "assets%2Fimages%2Fmenucharacters%2F" + mobileMenuXml[4];
+			var mobileXmlStart = data.indexOf(mobileXmlPath);
+			if(mobileXmlStart >= 0) {
+				var mobileXmlEnd = data.indexOf("g",mobileXmlStart);
+				var mobileXmlChunk = data.substring(mobileXmlStart,mobileXmlEnd);
+				mobileXmlChunk = mobileXmlChunk.replace("y" + mobileMenuXml[4].length + ":" + mobileMenuXml[4], "y" + mobileMenuXml[5].length + ":" + mobileMenuXml[5]);
+				mobileXmlChunk = mobileXmlChunk.replace("R2i" + mobileMenuXml[6], "R2i" + mobileMenuXml[7]);
+				data = data.substring(0,mobileXmlStart) + mobileXmlChunk + data.substring(mobileXmlEnd);
+			}
+		}
 
 	}
 	var manifest = lime_utils_AssetManifest.parse(data,ManifestResources.rootPath);
@@ -31029,7 +31063,7 @@ MenuCharacter.prototype = $extend(flixel_FlxSprite.prototype,{
 			}
 			rawJson = openfl_utils_Assets.getText(path);
 			var charFile = JSON.parse(rawJson);
-			var key = "menucharacters/" + charFile.image;
+			var key = "menucharacters/" + charFile.image + (StoryMenuState.mobileLowMemory ? "-mobile" : "");
 			var library = null;
 			this.set_frames(flixel_graphics_frames_FlxAtlasFrames.fromSparrow(Paths.getPath("images/" + key + ".png","IMAGE",library),Paths.getPath("images/" + key + ".xml","TEXT",library)));
 			this.animation.addByPrefix("idle",charFile.idle_anim,24);
@@ -31038,7 +31072,7 @@ MenuCharacter.prototype = $extend(flixel_FlxSprite.prototype,{
 				this.scale.set(charFile.scale,charFile.scale);
 				this.updateHitbox();
 			}
-			this.offset.set(charFile.position[0],charFile.position[1]);
+			this.offset.set(charFile.position[0] * (StoryMenuState.mobileLowMemory ? 0.5 : 1),charFile.position[1] * (StoryMenuState.mobileLowMemory ? 0.5 : 1));
 			this.animation.play("idle");
 		} else if(character == "") {
 			this.set_visible(false);
@@ -31060,7 +31094,7 @@ MenuCharacter.prototype = $extend(flixel_FlxSprite.prototype,{
 			}
 			rawJson = openfl_utils_Assets.getText(path);
 			var charFile = JSON.parse(rawJson);
-			var key = "menucharacters/" + charFile.image;
+			var key = "menucharacters/" + charFile.image + (StoryMenuState.mobileLowMemory ? "-mobile" : "");
 			var library = null;
 			this.set_frames(flixel_graphics_frames_FlxAtlasFrames.fromSparrow(Paths.getPath("images/" + key + ".png","IMAGE",library),Paths.getPath("images/" + key + ".xml","TEXT",library)));
 			this.animation.addByPrefix("idle",charFile.idle_anim,24);
@@ -31069,7 +31103,7 @@ MenuCharacter.prototype = $extend(flixel_FlxSprite.prototype,{
 				this.scale.set(charFile.scale,charFile.scale);
 				this.updateHitbox();
 			}
-			this.offset.set(charFile.position[0],charFile.position[1]);
+			this.offset.set(charFile.position[0] * (StoryMenuState.mobileLowMemory ? 0.5 : 1),charFile.position[1] * (StoryMenuState.mobileLowMemory ? 0.5 : 1));
 			this.animation.play("idle");
 		}
 	}

@@ -1,0 +1,19 @@
+<?xml version='1.0' encoding='utf-8'?>
+<TextureAtlas imagePath="Menu_Spooky_Kids-mobile.png">
+  <SubTexture name="M Spooky Kids Idle0000" x="0" y="0" width="88" height="126" pivotX="22.95" pivotY="0" frameX="-11" frameY="0" frameWidth="113" frameHeight="126" />
+  <SubTexture name="M Spooky Kids Idle0001" x="0" y="0" width="88" height="126" frameX="-11" frameY="0" frameWidth="113" frameHeight="126" />
+  <SubTexture name="M Spooky Kids Idle0002" x="90" y="0" width="88" height="125" frameX="-12" frameY="-2" frameWidth="113" frameHeight="126" />
+  <SubTexture name="M Spooky Kids Idle0003" x="90" y="0" width="88" height="125" frameX="-12" frameY="-2" frameWidth="113" frameHeight="126" />
+  <SubTexture name="M Spooky Kids Idle0004" x="180" y="0" width="82" height="112" frameX="-18" frameY="-14" frameWidth="113" frameHeight="126" />
+  <SubTexture name="M Spooky Kids Idle0005" x="180" y="0" width="82" height="112" frameX="-18" frameY="-14" frameWidth="113" frameHeight="126" />
+  <SubTexture name="M Spooky Kids Idle0006" x="264" y="0" width="82" height="114" frameX="-18" frameY="-12" frameWidth="113" frameHeight="126" />
+  <SubTexture name="M Spooky Kids Idle0007" x="264" y="0" width="82" height="114" frameX="-18" frameY="-12" frameWidth="113" frameHeight="126" />
+  <SubTexture name="M Spooky Kids Idle0008" x="348" y="0" width="113" height="122" frameX="0" frameY="-4" frameWidth="113" frameHeight="126" />
+  <SubTexture name="M Spooky Kids Idle0009" x="348" y="0" width="113" height="122" frameX="0" frameY="-4" frameWidth="113" frameHeight="126" />
+  <SubTexture name="M Spooky Kids Idle0010" x="0" y="128" width="110" height="121" frameX="-2" frameY="-4" frameWidth="113" frameHeight="126" />
+  <SubTexture name="M Spooky Kids Idle0011" x="0" y="128" width="110" height="121" frameX="-2" frameY="-4" frameWidth="113" frameHeight="126" />
+  <SubTexture name="M Spooky Kids Idle0012" x="180" y="0" width="82" height="112" frameX="-18" frameY="-14" frameWidth="113" frameHeight="126" />
+  <SubTexture name="M Spooky Kids Idle0013" x="180" y="0" width="82" height="112" frameX="-18" frameY="-14" frameWidth="113" frameHeight="126" />
+  <SubTexture name="M Spooky Kids Idle0014" x="264" y="0" width="82" height="114" frameX="-18" frameY="-12" frameWidth="113" frameHeight="126" />
+  <SubTexture name="M Spooky Kids Idle0015" x="264" y="0" width="82" height="114" frameX="-18" frameY="-12" frameWidth="113" frameHeight="126" />
+</TextureAtlas>

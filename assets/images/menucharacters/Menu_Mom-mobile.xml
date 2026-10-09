@@ -1,0 +1,17 @@
+<?xml version='1.0' encoding='utf-8'?>
+<TextureAtlas imagePath="Menu_Mom-mobile.png">
+  <SubTexture name="M Mom Idle0000" x="2" y="2" width="88" height="190" pivotX="1.75" pivotY="1.25" frameX="0" frameY="0" frameWidth="89" frameHeight="190" />
+  <SubTexture name="M Mom Idle0001" x="2" y="2" width="88" height="190" frameX="0" frameY="0" frameWidth="89" frameHeight="190" />
+  <SubTexture name="M Mom Idle0002" x="90" y="2" width="88" height="187" frameX="0" frameY="-3" frameWidth="89" frameHeight="190" />
+  <SubTexture name="M Mom Idle0003" x="90" y="2" width="88" height="187" frameX="0" frameY="-3" frameWidth="89" frameHeight="190" />
+  <SubTexture name="M Mom Idle0004" x="179" y="2" width="88" height="188" frameX="0" frameY="-2" frameWidth="89" frameHeight="190" />
+  <SubTexture name="M Mom Idle0005" x="179" y="2" width="88" height="188" frameX="0" frameY="-2" frameWidth="89" frameHeight="190" />
+  <SubTexture name="M Mom Idle0006" x="268" y="2" width="88" height="189" frameX="0" frameY="-1" frameWidth="89" frameHeight="190" />
+  <SubTexture name="M Mom Idle0007" x="268" y="2" width="88" height="189" frameX="0" frameY="-1" frameWidth="89" frameHeight="190" />
+  <SubTexture name="M Mom Idle0008" x="356" y="2" width="88" height="190" frameX="0" frameY="0" frameWidth="89" frameHeight="190" />
+  <SubTexture name="M Mom Idle0009" x="356" y="2" width="88" height="190" frameX="0" frameY="0" frameWidth="89" frameHeight="190" />
+  <SubTexture name="M Mom Idle0010" x="2" y="192" width="88" height="190" frameX="0" frameY="0" frameWidth="89" frameHeight="190" />
+  <SubTexture name="M Mom Idle0011" x="2" y="192" width="88" height="190" frameX="0" frameY="0" frameWidth="89" frameHeight="190" />
+  <SubTexture name="M Mom Idle0012" x="90" y="192" width="88" height="190" frameX="0" frameY="0" frameWidth="89" frameHeight="190" />
+  <SubTexture name="M Mom Idle0013" x="90" y="192" width="88" height="190" frameX="0" frameY="0" frameWidth="89" frameHeight="190" />
+</TextureAtlas>
