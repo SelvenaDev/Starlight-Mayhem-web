@@ -30527,11 +30527,11 @@ ManifestResources.init = function(config) {
 		data = data.replace("R0y53:assets%2Fimages%2F1280x720%20storyMenu%2Fwhatmenu.pngR2i230428R3R120R5R277R6tgo", "R0y60:assets%2Fimages%2F1280x720%20storyMenu%2Fwhatmenu-mobile.pngR2i61542R3R120R5R277R6tgo");
 		data = data.replace("R0y53:assets%2Fimages%2F1280x720%20storyMenu%2Fwhatmenu.xmlR2i2034R3R4R5R278R6tgo", "R0y60:assets%2Fimages%2F1280x720%20storyMenu%2Fwhatmenu-mobile.xmlR2i1900R3R4R5R278R6tgo");
 		data = data.replace("R0y43:assets%2Fimages%2FStart_Screen_AssetsCJ.pngR2i2650125R3R120R5R286R6tgo", "R0y50:assets%2Fimages%2FStart_Screen_AssetsCJ-mobile.pngR2i502607R3R120R5R286R6tgo");
-		data = data.replace("R0y43:assets%2Fimages%2FStart_Screen_AssetsCJ.xmlR2i2093R3R4R5R287R6tgo", "R0y50:assets%2Fimages%2FStart_Screen_AssetsCJ-mobile.xmlR2i1832R3R4R5R287R6tgo");
+		data = data.replace("R0y43:assets%2Fimages%2FStart_Screen_AssetsCJ.xmlR2i2093R3R4R5R287R6tgo", "R0y50:assets%2Fimages%2FStart_Screen_AssetsCJ-mobile.xmlR2i1991R3R4R5R287R6tgo");
 		data = data.replace("R0y32:assets%2Fimages%2FtitleEnter.pngR2i1497956R3R120R5R433R6tgo", "R0y39:assets%2Fimages%2FtitleEnter-mobile.pngR2i356642R3R120R5R433R6tgo");
-		data = data.replace("R0y32:assets%2Fimages%2FtitleEnter.xmlR2i4875R3R4R5R434R6tgo", "R0y39:assets%2Fimages%2FtitleEnter-mobile.xmlR2i1848R3R4R5R434R6tgo");
+		data = data.replace("R0y32:assets%2Fimages%2FtitleEnter.xmlR2i4875R3R4R5R434R6tgo", "R0y39:assets%2Fimages%2FtitleEnter-mobile.xmlR2i4765R3R4R5R434R6tgo");
 		data = data.replace("R0y35:assets%2Fimages%2FLogo%20Bumpin.pngR2i1509596R3R120R5R279R6tgo", "R0y42:assets%2Fimages%2FLogo%20Bumpin-mobile.pngR2i205930R3R120R5R279R6tgo");
-		data = data.replace("R0y35:assets%2Fimages%2FLogo%20Bumpin.xmlR2i2178R3R4R5R280R6tgo", "R0y42:assets%2Fimages%2FLogo%20Bumpin-mobile.xmlR2i1834R3R4R5R280R6tgo");
+		data = data.replace("R0y35:assets%2Fimages%2FLogo%20Bumpin.xmlR2i2178R3R4R5R280R6tgo", "R0y42:assets%2Fimages%2FLogo%20Bumpin-mobile.xmlR2i2074R3R4R5R280R6tgo");
 		// Do not decode the giant gameplay character sheets during mobile startup.
 		// StoryMenu uses its own reduced atlases; gameplay libraries are loaded after selection.
 		var deferredMobileImages = ["assets%2Fimages%2Fcharacters%2F"];
