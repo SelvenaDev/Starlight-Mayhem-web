@@ -22,17 +22,17 @@
 		@media (pointer: coarse), (max-width: 900px) and (hover: none) {
 			#mobile-controls { display: block; position: fixed; inset: 0; z-index: 100; pointer-events: none; touch-action: none; user-select: none; -webkit-user-select: none; }
 			#mobile-controls::before { content: ""; position: absolute; inset: 0; border-radius: 16px; background: linear-gradient(rgba(134, 239, 172, .68), rgba(134, 239, 172, .68)) top / 100% 3px no-repeat, linear-gradient(rgba(103, 232, 249, .68), rgba(103, 232, 249, .68)) bottom / 100% 3px no-repeat, linear-gradient(rgba(192, 132, 252, .68), rgba(192, 132, 252, .68)) left / 3px 100% no-repeat, linear-gradient(rgba(253, 164, 175, .68), rgba(253, 164, 175, .68)) right / 3px 100% no-repeat; pointer-events: none; }
-			.touch-pad { position: absolute; z-index: 2; left: calc(16px + env(safe-area-inset-left)); top: 50%; transform: translateY(-50%); display: flex; flex-direction: column; gap: clamp(6px, 1.2vh, 10px); pointer-events: none; }
-			#mobile-controls button { display: flex; align-items: center; justify-content: center; color: #fff; background: rgba(9, 27, 55, .42); border: 1px solid rgba(126, 235, 255, .72); border-radius: 14px; font: 800 clamp(25px, 6vw, 38px)/1 system-ui, sans-serif; text-shadow: 0 1px 2px rgba(0, 0, 0, .85); pointer-events: auto; touch-action: none; -webkit-tap-highlight-color: transparent; }
-			.touch-pad button { width: clamp(52px, 12vw, 64px); height: clamp(52px, 12vw, 64px); padding: 0; }
-			#mobile-controls [data-key="ArrowLeft"] { color: #d8b4fe; border-color: rgba(192, 132, 252, .9); background: rgba(105, 47, 170, .3); box-shadow: none; }
-			#mobile-controls [data-key="ArrowDown"] { color: #a5f3fc; border-color: rgba(103, 232, 249, .9); background: rgba(0, 123, 153, .3); box-shadow: none; }
-			#mobile-controls [data-key="ArrowUp"] { color: #bbf7d0; border-color: rgba(134, 239, 172, .9); background: rgba(22, 121, 67, .3); box-shadow: none; }
-			#mobile-controls [data-key="ArrowRight"] { color: #fecdd3; border-color: rgba(253, 164, 175, .9); background: rgba(170, 38, 57, .3); box-shadow: none; }
-			#mobile-controls button.is-pressed { filter: brightness(1.3); transform: scale(.97); }
-			.touch-actions { position: absolute; z-index: 3; right: calc(16px + env(safe-area-inset-right)); bottom: calc(16px + env(safe-area-inset-bottom)); display: flex; flex-direction: column; gap: 8px; pointer-events: none; }
+			.touch-lanes { position: absolute; z-index: 2; inset: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); pointer-events: none; }
+			#mobile-controls button { display: flex; align-items: center; justify-content: center; color: #fff; background: rgba(9, 27, 55, .22); border: 0; border-radius: 0; font: 800 clamp(42px, 10vw, 68px)/1 system-ui, sans-serif; text-shadow: 0 1px 2px rgba(0, 0, 0, .85); pointer-events: auto; touch-action: none; -webkit-tap-highlight-color: transparent; }
+			.touch-lane { width: 100%; height: 100%; box-sizing: border-box; align-items: flex-end !important; justify-content: center !important; padding: 0 0 calc(20px + env(safe-area-inset-bottom)); border: 1px solid var(--lane-border) !important; background: var(--lane-bg) !important; }
+			#mobile-controls [data-key="ArrowLeft"] { --lane-border: rgba(192, 132, 252, .46); --lane-bg: rgba(105, 47, 170, .045); color: #d8b4fe; }
+			#mobile-controls [data-key="ArrowDown"] { --lane-border: rgba(103, 232, 249, .46); --lane-bg: rgba(0, 123, 153, .045); color: #a5f3fc; }
+			#mobile-controls [data-key="ArrowUp"] { --lane-border: rgba(134, 239, 172, .46); --lane-bg: rgba(22, 121, 67, .045); color: #bbf7d0; }
+			#mobile-controls [data-key="ArrowRight"] { --lane-border: rgba(253, 164, 175, .46); --lane-bg: rgba(170, 38, 57, .045); color: #fecdd3; }
+			#mobile-controls button.is-pressed { filter: brightness(1.3); }
+			.touch-actions { position: absolute; z-index: 3; right: calc(14px + env(safe-area-inset-right)); top: calc(12px + env(safe-area-inset-top)); display: flex; flex-direction: column; gap: 8px; pointer-events: none; }
 			#mobile-controls .touch-actions button { width: clamp(68px, 18vw, 82px); height: clamp(44px, 8vh, 58px); padding: 0; border: 1px solid rgba(126, 235, 255, .72); border-radius: 10px; background: rgba(9, 27, 55, .58); box-shadow: none; font: 700 clamp(14px, 4vw, 18px)/1 system-ui, sans-serif; pointer-events: auto; }
-			#mobile-hint { position: absolute; z-index: 1; top: calc(10px + env(safe-area-inset-top)); left: 50%; transform: translateX(-50%); max-width: 92vw; padding: 6px 10px; border-radius: 12px; color: #fff; background: rgba(0, 0, 0, .56); font: 600 12px/1.3 system-ui, sans-serif; text-align: center; white-space: nowrap; pointer-events: none; }
+			#mobile-hint { position: absolute; z-index: 1; top: calc(10px + env(safe-area-inset-top)); left: 25%; width: 50%; padding: 6px 8px; border-radius: 12px; color: #fff; background: rgba(0, 0, 0, .56); font: 600 12px/1.3 system-ui, sans-serif; text-align: center; white-space: normal; pointer-events: none; }
 		}
 		@media (pointer: coarse) and (orientation: landscape) { #mobile-hint { display: none; } }
 		@font-face { font-family: 'Blank River'; src: url('assets/fonts/Blank River.ttf') format('truetype'); font-weight: normal; font-style: normal; }
@@ -50,12 +50,12 @@
 		lime.embed("Starlight Mayhem", "openfl-content", 1280, 720, { parameters: {} });
 	</script>
 	<div id="mobile-controls" aria-label="Touch controls">
-		<div id="mobile-hint" aria-hidden="true">画面を横向きにすると遊びやすくなります · 左の縦ボタンで操作</div>
-		<div class="touch-pad" aria-label="方向操作">
-			<button type="button" data-key="ArrowLeft" aria-label="左へ">◀</button>
-			<button type="button" data-key="ArrowDown" aria-label="下へ">▼</button>
-			<button type="button" data-key="ArrowUp" aria-label="上へ">▲</button>
-			<button type="button" data-key="ArrowRight" aria-label="右へ">▶</button>
+		<div id="mobile-hint" aria-hidden="true">画面を横向きにすると遊びやすくなります · 色付きの縦列をタップして操作</div>
+		<div class="touch-lanes" aria-label="方向操作">
+			<button class="touch-lane" type="button" data-key="ArrowLeft" aria-label="左へ">◀</button>
+			<button class="touch-lane" type="button" data-key="ArrowDown" aria-label="下へ">▼</button>
+			<button class="touch-lane" type="button" data-key="ArrowUp" aria-label="上へ">▲</button>
+			<button class="touch-lane" type="button" data-key="ArrowRight" aria-label="右へ">▶</button>
 		</div>
 		<div class="touch-actions" aria-label="メニュー操作">
 			<button type="button" data-key="Enter" aria-label="決定">決定</button>
