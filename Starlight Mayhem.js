@@ -40593,6 +40593,9 @@ StoryMenuState.prototype = $extend(MusicBeatState.prototype,{
 		this.add(this.grpWeekText);
 		var blackBarThingie = new flixel_FlxSprite().makeGraphic(flixel_FlxG.width,56,-16777216);
 		this.grpWeekCharacters = new flixel_group_FlxTypedGroup();
+		// These are the BF/GF/CJ portraits shown on the right side of StoryMenu.
+		// Register the group before creating the other overlays so its coordinates are drawn in the same 1280x720 space.
+		this.add(this.grpWeekCharacters);
 		this.grpLocks = new flixel_group_FlxTypedGroup();
 		this.add(this.grpLocks);
 		var _g = 0;
