@@ -30526,6 +30526,26 @@ ManifestResources.init = function(config) {
 		data = data.replace("R0y60:assets%2Fimages%2F1280x720%20storyMenu%2FMENUduet_assets.xmlR2i3896R3R4R5R261R6tgo", "R0y67:assets%2Fimages%2F1280x720%20storyMenu%2FMENUduet_assets-mobile.xmlR2i3795R3R4R5R261R6tgo");
 		data = data.replace("R0y53:assets%2Fimages%2F1280x720%20storyMenu%2Fwhatmenu.pngR2i230428R3R120R5R277R6tgo", "R0y60:assets%2Fimages%2F1280x720%20storyMenu%2Fwhatmenu-mobile.pngR2i61542R3R120R5R277R6tgo");
 		data = data.replace("R0y53:assets%2Fimages%2F1280x720%20storyMenu%2Fwhatmenu.xmlR2i2034R3R4R5R278R6tgo", "R0y60:assets%2Fimages%2F1280x720%20storyMenu%2Fwhatmenu-mobile.xmlR2i1900R3R4R5R278R6tgo");
+		// Do not decode the giant gameplay character sheets while the mobile menu is loading.
+		// Their paths remain registered for later explicit loads; only the startup preload flag is disabled.
+		var mobileCharacterPaths = [
+			"assets%2Fimages%2Fcharacters%2FBOYFRIEND.png",
+			"assets%2Fimages%2Fcharacters%2FBFGF.png",
+			"assets%2Fimages%2Fcharacters%2FGF_assets.png",
+			"assets%2Fimages%2Fcharacters%2FNoGFRGB.png"
+		];
+		for(var mobilePathIndex = 0; mobilePathIndex < mobileCharacterPaths.length; mobilePathIndex++) {
+			var mobilePath = mobileCharacterPaths[mobilePathIndex];
+			var mobileAssetStart = data.indexOf(mobilePath);
+			if(mobileAssetStart >= 0) {
+				var mobileAssetEnd = data.indexOf("g",mobileAssetStart);
+				if(mobileAssetEnd > mobileAssetStart) {
+					var mobileAsset = data.substring(mobileAssetStart,mobileAssetEnd);
+					mobileAsset = mobileAsset.replace(/R7(?=R6tgo$)/,"y7:preloadf");
+					data = data.substring(0,mobileAssetStart) + mobileAsset + data.substring(mobileAssetEnd);
+				}
+			}
+		}
 	}
 	var manifest = lime_utils_AssetManifest.parse(data,ManifestResources.rootPath);
 	var library = lime_utils_AssetLibrary.fromManifest(manifest);
@@ -40978,7 +40998,7 @@ StoryMenuState.prototype = $extend(MusicBeatState.prototype,{
 		this.sm.animation.addByPrefix("idle","penis",StoryMenuState.mobileLowMemory ? 12 : 24,true);
 		this.sm.animation.play("idle");
 		this.sm.set_antialiasing(ClientPrefs.globalAntialiasing);
-		this.sm.scale.set(StoryMenuState.mobileLowMemory ? 0.376 : 0.190,StoryMenuState.mobileLowMemory ? 0.376 : 0.190);
+		this.sm.scale.set(StoryMenuState.mobileLowMemory ? 0.752 : 0.190,StoryMenuState.mobileLowMemory ? 0.752 : 0.190);
 		this.cjruby = new flixel_FlxSprite(this.bg4.x - 200,this.bg4.y - 40);
 		var library = null;
 		this.cjruby.set_frames(flixel_graphics_frames_FlxAtlasFrames.fromSparrow(Paths.getPath("images/" + "1280x720 storyMenu/" + (StoryMenuState.mobileLowMemory ? "MENUduet_assets-mobile" : "MENUduet_assets") + ".png","IMAGE",library),Paths.getPath("images/" + "1280x720 storyMenu/" + (StoryMenuState.mobileLowMemory ? "MENUduet_assets-mobile" : "MENUduet_assets") + ".xml","TEXT",library)));
